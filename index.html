@@ -1,3 +1,149 @@
-ggggggggggggggg
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Resort - Best hotel affordable Accommodation</title>
+ <meta name="google-signin-client_id" content="">
+   <meta charset="utf-8">
+   <meta name="google-signin-client_id" content="">
+       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+<link rel="icon" href="images/favicon.ico">
+<link rel="shortcut icon" href="images/favicon.ico">
+<meta name="robots" content="index, follow" />
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/slider.css">
+<script src="js/jquery.js"></script>
+<script src="js/jquery-migrate-1.1.1.js"></script>
+<script src="js/superfish.js"></script>
+<script src="js/sForm.js"></script>
+<script src="js/jquery.jqtransform.js"></script>
+<script src="js/jquery.equalheights.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/tms-0.4.1.js"></script>
+<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="js/jquery.ui.totop.js"></script>
+<script>
+$(window).load(function () {
+    $('.slider')._TMS({
+        show: 0,
+        pauseOnHover: false,
+        prevBu: '.prev',
+        nextBu: '.next',
+        playBu: false,
+        duration: 800,
+        preset: 'random',
+        pagination: false, //'.pagination',true,'<ul></ul>'
+        pagNums: false,
+        slideshow: 8000,
+        numStatus: false,
+        banners: true,
+        waitBannerAnimation: false,
+        progressBar: false
+    });
+    $("#tabs").tabs();
+    $().UItoTop({
+        easingType: 'easeOutQuart'
+    });
+});
+</script>
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<link rel="stylesheet" media="screen" href="css/ie.css">
+<![endif]-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4949132339314821"
+     crossorigin="anonymous"></script>
+</head>
+<body class="page11"><style>
 
-kkkk
+
+
+
+</style>
+
+
+
+<iframe src="//www.skyhighresorts.com/body.php" frameborder="0" scrolling="no"  width="100%";" height="3600px"></iframe>
+
+
+
+        
+        
+<div style="display:none1;">
+
+
+<br/><br/>
+<p id="myP"></p>
+<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      document.getElementById("myP").innerHTML=id_token;
+}     //document.getElementById("myP").innerHTML='fffffffffffff';
+</script>
+<a href="#" onclick="signOut();">Sign out</a>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script><br/><br/>
+
+
+
+
+
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script>
+
+
+  function authenticate() {
+    return gapi.auth2.getAuthInstance()
+        .signIn({scope: "https://www.googleapis.com/auth/webmasters"})
+        .then(function() { console.log("Sign-in successful"); },
+              function(err) { console.error("Error signing in", err); });
+  }
+  function loadClient() {
+    gapi.client.setApiKey("AIzaSyAPe1HPULewD1aNmYAuunGHoLeHVgkCULALeWP");
+    return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/searchconsole/v1/rest")
+        .then(function() { console.log("GAPI client loaded for API"); },
+              function(err) { console.error("Error loading GAPI client for API", err); });
+  }
+  // Make sure the client is loaded and sign-in is complete before calling this method.
+  function execute() {
+    return gapi.client.webmasters.sites.add({
+      "siteUrl": "https://www.skyhighresorts.com"
+    })
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                console.log("Response", response);
+              },
+              function(err) { console.error("Execute error", err); });
+  }
+  gapi.load("client:auth2", function() {
+    gapi.auth2.init({client_id: "502387268944-v93ceih1hmu5f2iut9nlaghqmgmquml8.apps.googleusercontent.com"});
+  });
+</script>
+<button onclick="authenticate().then(loadClient)">authorize and load</button>
+<button onclick="execute()">execute</button>
+
+
+</div>
+
+
+
+</body>
+</html>
