@@ -1,32 +1,54 @@
-<html>
-  <head>
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script>
-      function start() {
-        // Initializes the client with the API key and the Translate API.
-        gapi.client.init({
-          'apiKey': 'AIzaSyAPe1BSwAQq7utbiK4udtWLtZGE5FAG2DTNodu',
-          'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/translate/v2/rest'],
-        }).then(function() {
-          // Executes an API request, and returns a Promise.
-          // The method name `language.translations.list` comes from the API discovery.
-          return gapi.client.language.translations.list({
-            q: 'hello world',
-            source: 'en',
-            target: 'de',
-          });
-        }).then(function(response) {
-          console.log(response.result.data.translations[0].translatedText);
-        }, function(reason) {
-          console.log('Error: ' + reason.result.error.message);
-        });
-      };
+<!DOCTYPE html>
+<html lang="en">
 
-      // Loads the JavaScript client library and invokes `start` afterwards.
-      gapi.load('client', start);
-    </script>
-  </head>
-  <body>
-    <div id="results"></div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+ 
+</head>
+
+<body>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script>
+    /**
+     * Sample JavaScript code for indexing.urlNotifications.publish
+     * See instructions for running APIs Explorer code samples locally:
+     * https://developers.google.com/explorer-help/guides/code_samples#javascript
+     */
+
+    function authenticate() {
+      return gapi.auth2.getAuthInstance()
+        .signIn({scope: "https://www.googleapis.com/auth/indexing"})
+        .then(function () { console.log("Sign-in successful"); },
+          function (err) { console.error("Error signing in", err); });
+    }
+    function loadClient() {
+      gapi.client.setApiKey("AIzaSyAPe1FMUPQrFPNBpoypcyoVMtiVZbtiZW4QkRv");
+      return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/indexing/v3/rest")
+        .then(function () { console.log("GAPI client loaded for API"); },
+          function (err) { console.error("Error loading GAPI client for API", err); });
+    }
+    // Make sure the client is loaded and sign-in is complete before calling this method.
+    function execute() {
+      return gapi.client.indexing.urlNotifications.publish({
+        "resource": {
+          "url": "https://www.skyhighresorts.com/data-entry.html",
+          "type": "URL_UPDATED"
+        }
+      })
+        .then(function (response) {
+          // Handle the results here (response.result has the parsed body).
+          console.log("Response", response);
+        },
+          function (err) { console.error("Execute error", err); });
+    }
+    gapi.load("client:auth2", function () {
+      gapi.auth2.init({client_id:"502387268944-v93ceih1hmu5f2iut9nlaghqmgmquml8.apps.googleusercontent.com"});
+    });
+  </script>
+  <button onclick="loadClient().then(authenticate)">authorize and load</button>
+  <button onclick="execute()">execute</button>
+</body>
+
 </html>
